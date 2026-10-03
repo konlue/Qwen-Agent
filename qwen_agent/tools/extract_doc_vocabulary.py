@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import json
 import os
 from typing import Dict, Optional, Union
 
@@ -77,6 +76,6 @@ class ExtractDocVocabulary(BaseTool):
                                   reverse=True)
             all_voc = ', '.join([term for term, score in sorted_items])
             if document_id:
-                self.db.call({'operate': 'put', 'key': document_id, 'value': json.dumps(all_voc, ensure_ascii=False)})
+                self.db.call({'operate': 'put', 'key': document_id, 'value': all_voc})
 
         return all_voc
